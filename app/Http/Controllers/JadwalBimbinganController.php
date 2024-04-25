@@ -6,13 +6,16 @@ use App\Models\BimbinganMagang;
 use App\Models\Magang;
 use Illuminate\Http\Request;
 use App\Models\Menu;
+use Illuminate\Support\Facades\Auth;
+use Session;
 
 class JadwalBimbinganController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $email = Auth::user()->email;
         $data = BimbinganMagang::all();
-        $magang = Magang::Magang();
+        $magang = Magang::BimbinganByMagang();
         // return view('jadwalbimbingan.jadwalbimbingan', ['bimbingan_magangs' => $data]);
         return view(
             'jadwalbimbingan.jadwalbimbingan',

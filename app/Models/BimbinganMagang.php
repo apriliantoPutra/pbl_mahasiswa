@@ -12,5 +12,7 @@ class BimbinganMagang extends Model
 
     public function bimbinganMagang()
     {
+        
     }
+    
 }
