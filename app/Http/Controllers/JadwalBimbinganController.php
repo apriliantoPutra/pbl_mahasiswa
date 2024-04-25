@@ -19,7 +19,7 @@ class JadwalBimbinganController extends Controller
         // return view('jadwalbimbingan.jadwalbimbingan', ['bimbingan_magangs' => $data]);
         return view(
             'jadwalbimbingan.jadwalbimbingan',
-            ['name' => 'Jadwal Bimbingan'],
+            ['name' => 'Bimbingan Magang'],
             compact('data', 'magang')
         );
     }
