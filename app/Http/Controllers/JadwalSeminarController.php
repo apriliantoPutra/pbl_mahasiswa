@@ -10,8 +10,9 @@ class JadwalSeminarController extends Controller
 {
    public function index()
    {
-      $data = JadwalSeminar::all();
-
-      return view('jadwalseminar.seminar', ['seminar_magangs' => $data]);
+       $seminar_magangs = JadwalSeminar::all(); // Fetch data from the JadwalSeminar model
+   
+       return view('jadwalseminar.seminar', ['seminar_magangs' => $seminar_magangs]); // Pass the fetched data to the view
    }
+   
 }

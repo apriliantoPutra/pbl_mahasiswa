@@ -74,7 +74,39 @@
                     <th>Status</th>
                 </tr>
             </thead>
-            
+            <tbody>
+                {{-- @foreach ($bimbingan_magangs as $index => $bimbingan_magang) --}}
+                @php
+                $i = 1;
+                @endphp
+                @foreach ($seminar_magangs as $index)
+                <tr>
+                    <td>{{ $i }}</td>
+                    <td>{{ $index->tgl_seminar }}</td>
+                    <td>{{ $index->tempat_seminar }}</td>
+                    <?php
+                        $hari = date('l', strtotime($index->tgl_seminar)); // Get day name
+                        $tanggal = date('d-m-Y', strtotime($index->tgl_seminar)); // Format date
+                    ?>
+                    <td><?php echo "$hari, $tanggal"; ?></td>
+                    <td>{{ $index->nilai_dosen }}</td>
+                    <td>{{ $index->nilai_akhir }}</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-block btn-sm btn-outline-info"
+                            data-toggle="dropdown"><i class="fas fa-cog"></i>
+                        </button>
+                        <div class="dropdown-menu" role="menu">
+                            <a class="dropdown-item" href="#">Edit</a>
+                            <a class="dropdown-item" href="#">Hapus</a>
+                        </div>
+                    </td>
+                </tr>
+                @php
+                $i++;
+                @endphp
+                @endforeach
+            </tbody>
         </table>
         <div class="pagination">
             <span>Showing 1 to 3 of 3 entries</span>
