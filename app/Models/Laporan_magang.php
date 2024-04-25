@@ -10,5 +10,5 @@ class Laporan_magang extends Model
     use HasFactory;
     protected $table = 'laporan_magangs';
     protected $primaryKey = 'id';
-    protected $fillable = ['name', 'nim', 'judul', 'file'];
+    protected $fillable = ['judul', 'file'];
 }

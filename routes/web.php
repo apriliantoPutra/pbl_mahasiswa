@@ -41,6 +41,7 @@ Route::resource('manage-role', RoleController::class);
 Route::resource('manage-menu', MenuController::class);
 Route::resource('logbook-magang', logbookController::class);
 Route::resource('laporan-magang', LaporanController::class);
+Route::resource("/laporanmagang", LaporanController::class);
 Route::resource('nilai-magang', NilaiController::class);
 Route::resource('jadwal-bimbingan-magang', JadwalBimbinganController::class);
 Route::resource('jadwal-seminar-magang', JadwalSeminarController::class);
