@@ -45,7 +45,6 @@ Route::resource('nilai-magang', NilaiController::class);
 Route::resource('jadwal-bimbingan-magang', JadwalBimbinganController::class);
 Route::resource('jadwal-seminar-magang', JadwalSeminarController::class);
 Route::get('/view-pdf/{logbook_id}', 'App\Http\Controllers\logbookController@viewPdf')->name('view_pdf');
-Route::post('/laporan-magang/tambah', [LaporanController::class, 'laporantambah']);
 Route::get('/logbook-magang/{logbook_magang}/edit', [logbookController::class, 'edit'])->name('logbook-magang.edit');
 Route::put('/logbook-magang/{logbook_magang}/update', [logbookController::class, 'update'])->name('logbook-magang.update');
 
