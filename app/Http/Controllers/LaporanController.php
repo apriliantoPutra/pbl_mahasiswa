@@ -23,11 +23,24 @@ class LaporanController extends Controller
     }
   
     public function store(Request $request): RedirectResponse
-    {
-        $input = $request->all();
-        Laporan_magang::create($input);
-        return redirect('laporanmagang')->with('success', 'Data berhasil disimpan.');;
-    }
+{
+    $this->validate($request, [
+        'judul' => 'required',
+        'file' => 'required|mimes:doc,docx,pdf,xls,xlsx,ppt,pptx',
+    ]);
+
+    $file = $request->file('file');
+    $nama_dokumen = $file->getClientOriginalName();
+    $file->move('storage', $nama_dokumen);
+
+    $data = new Laporan_magang();
+    $data->judul = $request->judul;
+    $data->file = $nama_dokumen;
+    $data->save();
+
+    return redirect('laporanmagang')->with('success', 'Data berhasil disimpan.');
+}
+
     public function show(string $id): View
     {
         $data = Laporan_magang::find($id);

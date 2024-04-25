@@ -33,7 +33,7 @@
                         </div>
                         <div class="form-group">
                             <label for="file">File</label>
-                            <input type="text" name="file" id="file" value="{{$laporanmagang->file}}" class="form-control">
+                            <input type="file" name="file" id="file" value="{{$laporanmagang->file}}" class="form-control">
                         </div>
                         <hr>
                         <a href="{{ url()->previous() }}" class="btn btn-secondary">Close</a>

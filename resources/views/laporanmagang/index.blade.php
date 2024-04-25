@@ -9,6 +9,27 @@
             background-color: #020238;
             color: #ffffff;
         }
+        .pagination {
+    display: flex;
+    justify-content: flex-end; 
+    padding: 10px;
+}
+
+.pagination span {
+    margin-right: auto; /* Mengatur agar elemen span fleksibel dan mengisi ruang yang tersedia */
+    color: black;
+}
+
+.pagination a {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    text-decoration: none;
+    color: #333;
+}
+
+.pagination a.active {
+    background-color: #f0f0f0;
+}
     </style>
 
     <div class="container mt-3">
@@ -17,8 +38,8 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <a href="{{ url('/laporanmagang/create') }}" class="btn btn-success float-right btn-sm" title="Tambah Laporan Magang">
-                            <i class="fa fa-plus"></i> Tambah Laporan Magang
+                        <a href="{{ url('/laporanmagang/create') }}" class="btn btn-success float-right" title="Tambah Laporan Magang">
+                            <i class="fa fa-plus"></i> Laporan Magang
                         </a>
                     </div>
                     <div class="card-body">
@@ -38,8 +59,12 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->judul }}</td>
-                                        <td>{{ $item->file }}</td>
-                                        <td>{{ $item->created_at }}</td>
+                                        <td>
+                                                <a href="file/{{ $item->file }}"  download="{{ $item->file }}">
+                                                {{ $item->file }}
+                                                </a>
+                                            </td>
+                                        <td>{{ $item->created_at->format('d/m/Y H:i:s')  }}</td>
                                         <td>
     <div class="dropdown">
     <button type="button" class="btn btn-block btn-sm btn-outline dropdown-toggle" data-toggle="dropdown" style="border-color: #020238;">
@@ -88,6 +113,12 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                            <div class="pagination">
+            <span>Showing 1 to 3 of 3 entries</span>
+            <a href="#" class="prev">Previous</a>
+            <a href="#" class="active">1</a>
+            <a href="#">Next</a>
+        </div>
                         </div>
                     </div>
                 </div>

@@ -46,7 +46,7 @@
 @endpush
 
 <div class="container mt-3">
-    <h3 class="mb-4"><b>Detail Laporan Magang</b></h3>
+    <h3 class="mb-4"><b>Detail Nilai Magang</b></h3>
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -57,16 +57,16 @@
                             <tbody>
                           
                                 <tr>
-                                    <th>Judul Laporan Magang</th>
-                                    <td>{{ $laporanmagang->judul }}</td>
+                                    <th>Nilai Dosen</th>
+                                    <td>{{ $nilai->nilai_dosen }}</td>
                                 </tr>
                                 <tr>
-                                    <th>File</th>
-                                    <td>{{ $laporanmagang->file }}</td>
+                                    <th>Nilai Industri</th>
+                                    <td>{{ $nilai->nilai_industri }}</td>
                                 </tr>
                                 <tr>
-                                    <th>Tanggal Upload</th>
-                                    <td>{{ $laporanmagang->created_at->format('d/m/Y H:i:s') }}</td> <!-- Change format here -->
+                                    <th>Nilai Akhir</th>
+                                    <td>{{ $nilai->nilai_akhir }}</td> <!-- Change format here -->
                                 </tr>
                             </tbody>
                         </table>

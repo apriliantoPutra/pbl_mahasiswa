@@ -10,5 +10,5 @@ class nilai extends Model
     use HasFactory;
     protected $table = 'nilais';
     protected $primaryKey = 'id';
-    protected $fillable = ['name', 'nim', 'nilai_dosen', 'nilai_industri', 'nilai_akhir'];
+    protected $fillable = ['nilai_dosen', 'nilai_industri', 'nilai_akhir'];
 }
