@@ -35,17 +35,11 @@
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
-                                
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Modal Tambah -->
-    
-  
-    @include('sweetalert::alert')
+    </div>   
 @endsection
