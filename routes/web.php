@@ -9,6 +9,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\logbookController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\JadwalSeminarController;
+use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -21,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
-|
+
 */
 
 Route::get('/', function () {
@@ -40,6 +41,7 @@ Route::resource('manage-role', RoleController::class);
 Route::resource('manage-menu', MenuController::class);
 Route::resource('logbook-magang', logbookController::class);
 Route::resource('laporan-magang', LaporanController::class);
+Route::resource('nilai-magang', NilaiController::class);
 Route::resource('jadwal-bimbingan-magang', JadwalBimbinganController::class);
 Route::resource('jadwal-seminar-magang', JadwalSeminarController::class);
 Route::get('/view-pdf/{logbook_id}', 'App\Http\Controllers\logbookController@viewPdf')->name('view_pdf');
