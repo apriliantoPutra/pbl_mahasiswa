@@ -18,38 +18,49 @@ class LaporanController extends Controller
         return view ('laporanmagang.laporanmagang')->with('laporanmagang', $data);
     }
  
-    // public function create(): View
-    // {
-    //     return view('students.create');
-    // }
-  
-    // public function store(Request $request): RedirectResponse
-    // {
-    //     $input = $request->all();
-    //     Laporan_magang::create($input);
-    //     return redirect('student')->with('flash_message', 'Student Addedd!');
-    // }
-    // public function show(string $id): View
-    // {
-    //     $student = Laporan_magang::find($id);
-    //     return view('students.show')->with('students', $student);
-    // }
-    // public function edit(string $id): View
-    // {
-    //     $student = Laporan_magang::find($id);
-    //     return view('students.edit')->with('students', $student);
-    // }
-    // public function update(Request $request, string $id): RedirectResponse
-    // {
-    //     $student = Laporan_magang::find($id);
-    //     $input = $request->all();
-    //     $student->update($input);
-    //     return redirect('student')->with('flash_message', 'student Updated!');  
-    // }
+    public function laporantambah(Request $request)
+    {
+      
+          $data = new laporan_magang();
+        
+          $data->name = $request->name;
+          $data->nim = $request->nim;
+          $data->judul = $request->judul;
+          $data->file = $request->file;
+        $data->save();
+        
+        return redirect('/laporan-magang')->with('success', 'Berhasi Upload!');
+    }
+
+     //method untuk hapus data 
+     public function laporanhapus($id)
+     {
+         $data=laporan_magang::find($id);
+         $data->delete();
+ 
+         return redirect()->back()->with('error', 'Berhasi Dihapus!');
+     }
+
+     //method untuk edit data 
+    public function laporanedit($id, Request $request)
+    {
+      $request->validate([
+        'name' => 'required',
+          'nim' => 'required',
+          'judul' => 'required',
+          'file' => 'required',
+          
+    ]);
+
+        $id = laporan_magang::find($id);
+        $id->name   = $request->name;
+        $id->nim      = $request->nim;
+        $id->judul  = $request->judul;
+        $id->file  = $request->file;
     
-    // public function destroy(string $id): RedirectResponse
-    // {
-    //     Laporan_magang::destroy($id);
-    //     return redirect('student')->with('flash_message', 'Student deleted!'); 
-    // }
+
+        $id->save();
+
+        return redirect()->back();
+    }
 }
