@@ -11,6 +11,7 @@ use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\JadwalSeminarController;
 use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PendaftaranController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -49,6 +50,9 @@ Route::get('/logbook-magang/{logbook_magang}/edit', [logbookController::class, '
 Route::put('/logbook-magang/{logbook_magang}/update', [logbookController::class, 'update'])->name('logbook-magang.update');
 
 Route::resource('manage-permission', PermissionController::class)->only('store', 'destroy');
-
+Route::get('/daftar-magang', [PendaftaranController::class, 'index'])->name('daftar-magang.index');
+Route::get('/daftar-magang/biodata', [PendaftaranController::class, 'biodata'])->name('daftar-magang.biodata');
+Route::get('/daftar-magang/dataindustri', [PendaftaranController::class, 'dataindustri'])->name('daftar-magang.dataindustri');
+Route::get('/daftar-magang/upload', [PendaftaranController::class, 'upload'])->name('daftar-magang.upload');
 
 Route::get('dbbackup', [DBBackupController::class, 'DBDataBackup']);
