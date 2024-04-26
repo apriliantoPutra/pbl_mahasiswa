@@ -13,8 +13,6 @@ return new class extends Migration
     {
         Schema::create('laporan_magangs', function (Blueprint $table) {
             $table->id();
-            $table->string("name");
-            $table->string("nim");
             $table->string("judul");
             $table->string("file");
             $table->timestamps();

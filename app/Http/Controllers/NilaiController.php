@@ -4,16 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Models\nilai;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
+
+use Illuminate\Http\Response;
+
+
+
 
 class NilaiController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index() 
     {
         $data = nilai::all();
-        return view ('nilai.nilaimagang')->with('nilai', $data);
+        return view ('nilai.index')->with('nilai', $data);
     }
 
     /**
@@ -35,9 +42,10 @@ class NilaiController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id) 
     {
-        //
+        $data = nilai::find($id);
+        return view('nilai.show')->with('nilai', $data);
     }
 
     /**
