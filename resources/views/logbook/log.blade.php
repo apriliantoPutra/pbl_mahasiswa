@@ -89,7 +89,7 @@
                     <td>{{ $index->kegiatan }}</td>
                     {{-- <td><a href="{{ route('view_pdf', ['logbook_id' => $index->logbook_id]) }}">Lihat Dokumen</a></td> --}}
                     <td>
-                        <a href="{{ asset('assets/dokumen/' . $index->bukti) }}" target="_blank">Lihat Bukti</a>
+                        <a href="{{ asset('assets/dokumen/' . $index->bukti) }}" target="_blank">Download Bukti</a>
                     </td>
                     
                     <td>
