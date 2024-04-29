@@ -47,6 +47,7 @@
                                     <th>Nilai Dosen</th>
                                     <th>Nilai Industri</th>
                                     <th>Nilai Akhir</th>
+                                    <th>Jenis Dokumen</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -57,6 +58,7 @@
                                         <td>{{ $item->nilai_dosen }}</td>
                                         <td>{{ $item->nilai_industri }}</td>
                                         <td>{{ $item->nilai_akhir }}</td>
+                                        <td>{{ $item->tipelaporan_id }}</td>
                                         <td>
     <div class="dropdown">
     <button type="button" class="btn btn-block btn-sm btn-outline dropdown-toggle" data-toggle="dropdown" style="border-color: #020238;">

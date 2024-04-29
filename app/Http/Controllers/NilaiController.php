@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\nilai;
+use App\Models\Tipe_laporan;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -20,6 +21,7 @@ class NilaiController extends Controller
     public function index() 
     {
         $data = nilai::all();
+        
         return view ('nilai.index')->with('nilai', $data);
     }
 
