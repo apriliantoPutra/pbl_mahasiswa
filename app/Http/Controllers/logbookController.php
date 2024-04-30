@@ -10,14 +10,8 @@ class logbookController extends Controller
 {
     public function index()
     {
-        // $menus = Menu::all();
         $data = logbook_magang::all();
-        return view(
-            'logbook.log',
-            ["name" => "Logbook"],
-            ['logbook_magangs' => $data]
-        );
-        // return view('bimbingan.databimbingan', compact('menus'));
+        return view('logbook.log', ['name' => 'Logbook', 'logbook_magangs' => $data]);
     }
     public function create()
     {

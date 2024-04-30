@@ -29,5 +29,4 @@ class PendaftaranController extends Controller
         return view('pendaftaran.upload');
     }
 }
-
 ?>

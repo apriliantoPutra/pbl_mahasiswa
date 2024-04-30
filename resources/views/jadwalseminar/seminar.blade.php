@@ -1,118 +1,80 @@
 @extends('layouts.app')
-
 @section('content')
+@push('css')
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <style>
-  .container {
-    width: 90%;
-    margin-left: 10px;
-    padding: 20px;
-  }
-  h1{
-    margin-bottom: 20px;
-  }
-  .table-responsive {
-    background-color: white;
-    padding: 20px;
-    margin-top: 20px;
-    box-shadow: 0px -5px 0px blue;
-    border-radius: 3px;
-  }
-  .pagination {
-    display: flex;
-    justify-content: flex-end; 
-    padding: 10px;
-}
-
-.pagination span {
-    margin-right: auto; /* Mengatur agar elemen span fleksibel dan mengisi ruang yang tersedia */
-    color: black;
-}
-
-.pagination a {
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-    text-decoration: none;
-    color: #333;
-}
-
-.pagination a.active {
-    background-color: #f0f0f0;
-}
+    /* Add border to card-header */
+    .card-header {
+        border-top: 5px solid #020238;
+        background-color: #fff; /* Background color */
+    }
+    .card-body {
+        padding: 20px;
+    }
+    .card-body p {
+        margin-bottom: 10px;
+        font-size: 16px;
+    }
+    .table {
+        width: 100%;
+        margin-bottom: 0;
+    }
+    .table th, .table td {
+        padding: 0.75rem;
+        vertical-align: top;
+        border-top: 1px solid #dee2e6;
+    }
+    .table th {
+        background-color: #f8f9fa; /* Table header background color */
+        border-color: #dee2e6;
+        font-size: 16px;
+        font-weight: bold;
+    }
+    .btn-secondary {
+        background-color: #6c757d; /* Button background color */
+        border-color: #6c757d; /* Button border color */
+        color: #ffffff; /* Button text color */
+        font-size: 16px;
+        padding: 10px 20px;
+        margin-top: 20px;
+    }
+    .btn-secondary:hover {
+        background-color: #5a6268; /* Button background color on hover */
+        border-color: #545b62; /* Button border color on hover */
+    }
 </style>
-<div class="container">
-    <h1>Jadwal Seminar</h1>
-    <div class="row mb-2">
-        <div class="col-sm-6 text-uppercase">
-            <div class="card-tools">
-                <a href="#" class="btn btn-sm btn-success"><i class="fas fa-plus-circle"></i> Tambah Jadwal Bimbingan</a>
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <form action="#" method="GET" class="form-inline float-sm-right">
-                <div class="input-group input-group-sm">
-                    <input class="form-control form-control-navbar" type="search" placeholder="Search"
-                        aria-label="Search">
-                    <div class="input-group-append">
-                        <button class="btn btn-navbar" type="submit">
-                            <i class="fas fa-search"></i>
-                        </button>
+@endpush
+
+<div class="container mt-3">
+    <h3 class="mb-4"><b>Jadwal Seminar</b></h3>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            @foreach($seminar_magangs as $index)
+                            <p><strong>Nama:</strong> {{ $index->nama_id }}</p>
+                            <p><strong>Nim:</strong> {{ $index->mhs_nim }}</p>
+                            <p><strong>Penguji:</strong> {{ $index->dosen_nama }}</p>
+                            @endforeach
+                        </div>
+                        <div class="col-sm-6">
+                            @foreach($seminar_magangs as $index)
+                            <?php
+                                $hari = date('l', strtotime($index->tgl_seminar)); // Get day name
+                                $tanggal = date('d-m-Y', strtotime($index->tgl_seminar)); // Format date
+                            ?>
+                            <p><strong>Jadwal:</strong> <?php echo "$hari, $tanggal"; ?></p>
+                            <p><strong>Jam:</strong> {{ $index->jam }}</p>
+                            <p><strong>Ruangan:</strong> {{ $index->ruangan }}</p>
+                            <p><strong>Link Zoom:</strong>---</p>
+                            <p><strong>Catatan:</strong>{{ $index->catatan }}</p>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
-            </form>
-        </div>
-    </div>
-    <div class="table-responsive">
-        <table class="table table-bordered table-hover">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Nama</th>
-                    <th>Nim</th>
-                    <th>Jadwal</th>
-                    <th>Tempat</th>
-                    <th>Dosen Penguji</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{-- @foreach ($bimbingan_magangs as $index => $bimbingan_magang) --}}
-                @php
-                $i = 1;
-                @endphp
-                @foreach ($seminar_magangs as $index)
-                <tr>
-                    <td>{{ $i }}</td>
-                    <td>{{ $index->tgl_seminar }}</td>
-                    <td>{{ $index->tempat_seminar }}</td>
-                    <?php
-                        $hari = date('l', strtotime($index->tgl_seminar)); // Get day name
-                        $tanggal = date('d-m-Y', strtotime($index->tgl_seminar)); // Format date
-                    ?>
-                    <td><?php echo "$hari, $tanggal"; ?></td>
-                    <td>{{ $index->nilai_dosen }}</td>
-                    <td>{{ $index->nilai_akhir }}</td>
-                    
-                    <td>
-                        <button type="button" class="btn btn-block btn-sm btn-outline-info"
-                            data-toggle="dropdown"><i class="fas fa-cog"></i>
-                        </button>
-                        <div class="dropdown-menu" role="menu">
-                            <a class="dropdown-item" href="#">Edit</a>
-                            <a class="dropdown-item" href="#">Hapus</a>
-                        </div>
-                    </td>
-                </tr>
-                @php
-                $i++;
-                @endphp
-                @endforeach
-            </tbody>
-        </table>
-        <div class="pagination">
-            <span>Showing 1 to 3 of 3 entries</span>
-            <a href="#" class="prev">Previous</a>
-            <a href="#" class="active">1</a>
-            <a href="#">Next</a>
+            </div>
         </div>
     </div>
 </div>

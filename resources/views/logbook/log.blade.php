@@ -97,6 +97,7 @@
                             data-toggle="dropdown"><i class="fas fa-cog"></i>
                         </button>
                         <div class="dropdown-menu" role="menu">
+                            <a class="dropdown-item" href="#">Detail</a>
                             <a class="dropdown-item" href="{{ route('logbook-magang.edit', ['logbook_magang' => $index->logbook_id]) }}">Edit</a>
                             <form method="POST" action="{{ route('logbook-magang.destroy', $index->logbook_id) }}" id="delete-form-{{ $index->logbook_id }}">
                                 @csrf
