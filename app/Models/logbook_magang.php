@@ -13,16 +13,18 @@ class logbook_magang extends Model
     use HasFactory;
     protected $primaryKey = 'logbook_id';
     public $timestamps = true;
-    // public static function logbook_mhs()
-    // {
-    //     $email = Auth::user()->email;
-    //     $logbook = DB::table('logbook_magangs')
-    //         ->join('mahasiswas', 'mahasiswas.mhs_nim', '=', 'magangs.mhs_nim')
-    //         ->join('magangs', 'magangs.magang_id', '=', 'logbook_magangs.magang_id')
-    //         ->join('users', 'users.email', '=', 'mahasiswas.email')
-    //         ->select('logbook_magangs.*', 'users.email', 'mahasiswas.*')
-    //         ->where('users.email', $email)
-    //         ->get();
-    //     return $logbook;
-    // }
+    public static function LogbookByMagang()
+    {
+        $email = Auth::user()->email;
+        $logbookMagangs = self::join('magangs', 'seminar_magangs.magang_id', '=', 'magangs.magang_id')
+            ->join('mahasiswas', 'mahasiswas.mhs_nim', '=', 'magangs.mhs_nim')
+            ->join('dosens', 'dosens.dosen_nip', '=', 'magangs.dosen_nip')
+            ->join('bimbingan_magangs', 'bimbingan_magangs.magang_id', '=', 'magangs.magang_id')
+            ->join('users', 'users.email', '=', 'mahasiswas.email')
+            ->select('seminar_magangs.*', 'mahasiswas.mhs_nim', 'mahasiswas.nama_id', 'dosens.dosen_nama', 'users.email')
+            ->where('users.email', $email)
+            ->get();
+
+        return $logbookMagangs;
+    }
 }

@@ -11,7 +11,7 @@
         }
         .pagination {
     display: flex;
-    justify-content: flex-end; 
+    justify-content: flex-end;
     padding: 10px;
 }
 
@@ -59,10 +59,14 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->judul }}</td>
-                                        <td>
+                                        {{-- <td>
                                                 <a href="file/{{ $item->file }}"  download="{{ $item->file }}">
-                                                {{ $item->file }}
+                                                 targ
                                                 </a>
+                                            </td> --}}
+                                            <td>
+                                                <a href="{{ asset('storage/' . $item->file) }}"
+                                                    target="_blank">{{ $item->file}}</a>
                                             </td>
                                         <td>{{ $item->created_at->format('d/m/Y H:i:s')  }}</td>
                                         <td>

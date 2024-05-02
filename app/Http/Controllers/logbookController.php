@@ -38,7 +38,7 @@ class logbookController extends Controller
         // Upload file
         $file_dokumen = $request->file('bukti');
         $nama_dokumen = $request->file('bukti')->getClientOriginalName();
-        $file_dokumen->move('assets/dokumen/', $nama_dokumen);
+        $file_dokumen->move('storage/', $nama_dokumen);
 
 
         // Simpan data ke database
@@ -92,7 +92,7 @@ class logbookController extends Controller
         if ($request->hasFile('bukti')) {
             $file_dokumen = $request->file('bukti');
             $nama_dokumen = $file_dokumen->getClientOriginalName();
-            $file_dokumen->move('assets/dokumen/', $nama_dokumen);
+            $file_dokumen->move('storage/', $nama_dokumen);
 
             // Mengupdate nama file bukti
             $logbook_magang->bukti = $nama_dokumen;
@@ -106,5 +106,11 @@ class logbookController extends Controller
 
         // Redirect ke halaman lain dengan pesan sukses
         return redirect()->route('logbook-magang.index')->with('success', 'Data berhasil disimpan.');
+    }
+    //mengambil show
+    public function show($logbook_id)
+    {
+        $logbook_magang = logbook_magang::find($logbook_id);
+        return view('logbook.show', compact('logbook_magang'));
     }
 }
