@@ -80,20 +80,8 @@
                                         </div>
                                     @enderror
                                 </div>
-                                <div class="form-group">
-                                    <label>Upload Bukti</label>
-                                    <div class="custom-file">
-                                        <input type="file" name="bukti" class="custom-file-input @error('bukti') is-invalid @enderror">
-                                        <label class="custom-file-label">Pilih File</label>
-                                        @error('bukti')
-                                            <div class="invalid-feedback" role="alert">
-                                                <span>{{ $message }}</span>
-                                            </div>
-                                        @enderror
-                                    </div>
-                                </div>                                
-                                
-                                
+
+
                             </div>
                             <div class="card-footer">
                                 <button type="submit" name="update" class="btn btn-info btn-block btn-flat"><i class="fa fa-save"></i>

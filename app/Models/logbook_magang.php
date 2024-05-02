@@ -13,16 +13,27 @@ class logbook_magang extends Model
     use HasFactory;
     protected $primaryKey = 'logbook_id';
     public $timestamps = true;
+    public $incrementing = true;
     public static function LogbookByMagang()
     {
+        // Mendapatkan email pengguna yang sedang terautentikasi
         $email = Auth::user()->email;
-        $logbookMagangs = self::join('magangs', 'seminar_magangs.magang_id', '=', 'magangs.magang_id')
-            ->join('mahasiswas', 'mahasiswas.mhs_nim', '=', 'magangs.mhs_nim')
-            ->join('dosens', 'dosens.dosen_nip', '=', 'magangs.dosen_nip')
-            ->join('bimbingan_magangs', 'bimbingan_magangs.magang_id', '=', 'magangs.magang_id')
-            ->join('users', 'users.email', '=', 'mahasiswas.email')
-            ->select('seminar_magangs.*', 'mahasiswas.mhs_nim', 'mahasiswas.nama_id', 'dosens.dosen_nama', 'users.email')
+
+        // Mendapatkan magang_id dari tabel magangs berdasarkan email pengguna
+        $magang_id = DB::table('magangs')
+            ->join('mahasiswas', 'magangs.mhs_nim', '=', 'mahasiswas.mhs_nim')
+            ->join('users', 'mahasiswas.email', '=', 'users.email')
             ->where('users.email', $email)
+            ->value('magangs.magang_id');
+
+        // Simpan magang_id ke dalam session
+        session(['magang_id' => $magang_id]);
+
+        // Mengambil data logbook_magangs berdasarkan magang_id dari session
+        $logbookMagangs = DB::table('logbook_magangs')
+            ->join('magangs', 'magangs.magang_id', '=', 'logbook_magangs.magang_id')
+            ->select('magangs.magang_id', 'logbook_magangs.*')
+            ->where('magangs.magang_id', $magang_id)
             ->get();
 
         return $logbookMagangs;

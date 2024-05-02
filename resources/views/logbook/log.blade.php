@@ -57,28 +57,6 @@
     </div>
     <div class="content">
         <div class="container-fluid">
-            {{-- <h1>{{ $name }}</h1>
-            <div class="row mb-2">
-                <div class="col-sm-6 text-uppercase">
-                    <div class="card-tools">
-                        <a href="{{ route('logbook-magang.create') }}" class="btn btn-sm btn-success"><i
-                                class="fas fa-plus-circle"></i> Tambah LogBook</a>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <form action="#" method="GET" class="form-inline float-sm-right">
-                        <div class="input-group input-group-sm">
-                            <input class="form-control form-control-navbar" type="search" placeholder="Search"
-                                aria-label="Search">
-                            <div class="input-group-append">
-                                <button class="btn btn-navbar" type="submit">
-                                    <i class="fas fa-search"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div> --}}
             <div class="row">
                 <div class="col">
                     <div class="card card-primary card-outline">
@@ -97,7 +75,6 @@
                                             <th>Hari/tanggal</th>
                                             <th>Jam Kerja</th>
                                             <th>Aktivitas</th>
-                                            <th>Bukti</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -113,10 +90,6 @@
                                                 <td>{{ $index->jam }}</td>
                                                 <td>{{ $index->kegiatan }}</td>
                                                 {{-- <td><a href="{{ route('view_pdf', ['logbook_id' => $index->logbook_id]) }}">Lihat Dokumen</a></td> --}}
-                                                <td>
-                                                    <a href="{{ asset('storage/' . $index->bukti) }}"
-                                                        target="_blank">{{ $index->bukti }}</a>
-                                                </td>
                                                 <td>
                                                     <button type="button" class="btn btn-block btn-sm btn-outline-info"
                                                         data-toggle="dropdown"><i class="fas fa-cog"></i>
