@@ -28,12 +28,12 @@
                         @method("PATCH")
                         <input type="hidden" name="id" id="id" value="{{$laporanmagang->id}}">
                         <div class="form-group">
-                            <label for="judul">Judul</label>
-                            <input type="text" name="judul" id="judul" value="{{$laporanmagang->judul}}" class="form-control">
+                            <label for="magang_judul">Judul</label>
+                            <input type="text" name="magang_judul" id="magang_judul" value="{{$laporanmagang->magang_judul}}" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="file">File</label>
-                            <input type="file" name="file" id="file" value="{{$laporanmagang->file}}" class="form-control">
+                            <label for="file_magang">File</label>
+                            <input type="file_magang" name="file_magang" id="file_magang" value="{{$laporanmagang->file_magang}}" class="form-control">
                         </div>
                         <hr>
                         <a href="{{ url()->previous() }}" class="btn btn-secondary">Close</a>

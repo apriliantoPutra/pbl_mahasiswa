@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -15,55 +16,56 @@ class LaporanController extends Controller
     public function index(): View
     {
         $data = Laporan_magang::all();
-        return view ('laporanmagang.index')->with('laporanmagang', $data);
+        return view('laporanmagang.index')->with('laporanmagang', $data);
     }
     public function create(): View
     {
         return view('laporanmagang.create');
     }
-  
+
     public function store(Request $request): RedirectResponse
-{
-    $this->validate($request, [
-        'judul' => 'required',
-        'file' => 'required|mimes:doc,docx,pdf,xls,xlsx,ppt,pptx',
-    ]);
-
-    $file = $request->file('file');
-    $nama_dokumen = $file->getClientOriginalName();
-    $file->move('storage', $nama_dokumen);
-
-    $data = new Laporan_magang();
-    $data->judul = $request->judul;
-    $data->file = $nama_dokumen;
-    $data->save();
-
-    return redirect('laporanmagang')->with('success', 'Data berhasil disimpan.');
-}
-
-    public function show(string $id): View
     {
-        $data = Laporan_magang::find($id);
+        $this->validate($request, [
+            'magang_judul' => 'required',
+            'file_magang' => 'required|mimes:doc,docx,pdf,xls,xlsx,ppt,pptx',
+        ]);
+
+        $file_magang = $request->file('file_magang');
+        $nama_dokumen = $file_magang->getClientOriginalName();
+        $file_magang->move('storage', $nama_dokumen);
+
+        $magang_id = session('magang_id');
+
+        $data = new Laporan_magang();
+        $data->magang_id = $request->magang_id;
+        $data->magang_judul = $request->magang_judul;
+        $data->file_magang = $nama_dokumen;
+        $data->save();
+
+        return redirect('laporanmagang')->with('success', 'Data berhasil disimpan.');
+    }
+
+    public function show(string $laporan_id): View
+    {
+        $data = Laporan_magang::find($laporan_id);
         return view('laporanmagang.show')->with('laporanmagang', $data);
     }
-    public function edit(string $id): View
+    public function edit(string $laporan_id): View
     {
-        $data = Laporan_magang::find($id);
+        $data = Laporan_magang::find($laporan_id);
         return view('laporanmagang.edit')->with('laporanmagang', $data);
     }
-    public function update(Request $request, string $id): RedirectResponse
+    public function update(Request $request, string $laporan_id): RedirectResponse
     {
-        $data = Laporan_magang::find($id);
+        $data = Laporan_magang::find($laporan_id);
         $input = $request->all();
         $data->update($input);
-        return redirect('laporanmagang')->with('flash_message', 'student Updated!');  
+        return redirect('laporanmagang')->with('flash_message', 'student Updated!');
     }
-    
-    public function destroy(string $id): RedirectResponse
+
+    public function destroy(string $laporan_id): RedirectResponse
     {
-        Laporan_magang::destroy($id);
+        Laporan_magang::destroy($laporan_id);
         return redirect('laporanmagang')->with('error', 'Data berhasil dihapus.');
     }
- 
-    
 }

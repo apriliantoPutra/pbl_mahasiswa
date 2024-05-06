@@ -100,12 +100,10 @@
                                                         <a class="dropdown-item"
                                                             href="{{ route('logbook-magang.edit', ['logbook_magang' => $index->logbook_id]) }}">Edit</a>
                                                         <form method="POST"
-                                                            action="{{ route('logbook-magang.destroy', $index->logbook_id) }}"
-                                                            id="delete-form-{{ $index->logbook_id }}">
+                                                            action="{{ route('logbook-magang.destroy', $index->logbook_id) }}">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <a class="dropdown-item confirm-button" href="#"
-                                                                onclick="event.preventDefault(); document.getElementById('delete-form-{{ $index->logbook_id }}').submit();">Hapus</a>
+                                                            <a class="dropdown-item confirm-button" href="#">Hapus</a>
                                                         </form>
                                                     </div>
                                                 </td>

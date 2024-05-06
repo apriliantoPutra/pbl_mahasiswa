@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @push('css')
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/clockpicker/0.0.7/jquery-clockpicker.min.css">
 <style>
     /* Tambahkan border pada input file */
     .custom-file-input {
@@ -59,15 +60,14 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Jam</label>
-                                    <input type="text" name="jam"
-                                        class="form-control @error('jam') is-invalid @enderror"
-                                        placeholder="Pilih Jam">
+                                    <input type="text" name="jam" class="form-control clockpicker @error('jam') is-invalid @enderror" placeholder="Pilih Jam" data-placement="top">
                                     @error('jam')
                                         <div class="invalid-feedback" role="alert">
                                             <span>{{ $message }}</span>
                                         </div>
                                     @enderror
                                 </div>
+
                                 <div class="form-group">
                                     <label>kegiatan</label>
                                     <input type="text" name="kegiatan"
@@ -101,4 +101,14 @@
         });
     });
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clockpicker/0.0.7/jquery-clockpicker.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.clockpicker').clockpicker({
+            donetext: 'Done', // Text untuk tombol "Selesai"
+            autoclose: true // Otomatis menutup picker setelah memilih jam
+        });
+    });
+</script>
+
 @endpush

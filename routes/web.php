@@ -53,7 +53,6 @@ Route::put('/logbook-magang/{logbook_magang}/update', [logbookController::class,
 
 Route::resource('manage-permission', PermissionController::class)->only('store', 'destroy');
 Route::get('/daftar-magang', [PendaftaranController::class, 'index'])->name('daftar-magang.index');
-Route::get('/daftar-magang/biodata', [PendaftaranController::class, 'biodata'])->name('daftar-magang.biodata');
 Route::get('/daftar-magang/dataindustri', [PendaftaranController::class, 'dataindustri'])->name('daftar-magang.dataindustri');
 Route::get('/daftar-magang/upload', [PendaftaranController::class, 'upload'])->name('daftar-magang.upload');
 

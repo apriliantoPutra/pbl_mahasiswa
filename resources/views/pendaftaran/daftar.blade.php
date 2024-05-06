@@ -6,6 +6,7 @@
         text-align: left;
         padding-left: 20px; /* Untuk memberikan sedikit padding di sebelah kiri judul */
         margin-bottom: 20px; /* Untuk memberikan jarak antara judul dan form */
+        border
     }
 
     .container {
@@ -38,15 +39,77 @@
         background-color: #218838;
         border-color: #218838;
     }
+    .lingkaran {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-bottom: 20px;
+    }
 
+    .isi1 {
+        background-color:  #020238;
+        color: white;
+        border-radius: 50%; /* Untuk membuat lingkaran */
+        width: 50px; /* Ukuran diameter lingkaran */
+        height: 50px; /* Ukuran diameter lingkaran */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 10px; /* Ubah margin-left sesuai kebutuhan */
+        font-size: 30px;
+    }
+
+    .isi2 {
+        background-color:rgba(216, 216, 216, 1);
+        color: white;
+        border-radius: 50%; /* Untuk membuat lingkaran */
+        width: 50px; /* Ukuran diameter lingkaran */
+        height: 50px; /* Ukuran diameter lingkaran */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 10px; /* Ubah margin-left sesuai kebutuhan */
+        font-size: 30px;
+    }
+
+    .isi3 {
+        background-color: rgba(216, 216, 216, 1);
+        color: white;
+        border-radius: 50%; /* Untuk membuat lingkaran */
+        width: 50px; /* Ukuran diameter lingkaran */
+        height: 50px; /* Ukuran diameter lingkaran */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 10px; /* Ubah margin-left sesuai kebutuhan */
+        font-size: 30px;
+    }
+    h4 {
+        font-size: 30px;
+        margin-top: 25px;
+        margin-left: 10px;
+    }
 </style>
 <div class="judul">
-    <h4>Pendaftaran</h4>
+    <h4><strong>
+    Pendaftaran
+    </strong></h4>
 </div>
 
 <div class="container">
-    <div class="button-container">
-        <button onclick="window.location.href='{{ route('daftar-magang.biodata') }}'" type="button" class="btn btn-success">Daftar Magang</button>
+        <div class="lingkaran">
+            <div class="isi1">
+                1
+            </div>
+            <div class="isi2">
+                2
+            </div>
+            <div class="isi3">
+                3
+            </div>
+        </div>
+        <div class="button-container">
+        <button onclick="window.location.href='{{ route('daftar-magang.dataindustri') }}'" type="button" class="btn btn-success">Daftar Magang</button>
     </div>
 
     <table class="table">

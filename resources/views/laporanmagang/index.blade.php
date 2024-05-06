@@ -35,7 +35,7 @@
     </style>
 
     <div class="container mt-3">
-        <h3 class="mb-4"><b>Daftar Laporan Magang</b></h3>
+        <h3 class="mb-4"><b>Daftar Dokumen Magang</b></h3>
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -51,8 +51,9 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Judul Laporan Magang</th>
+                                        <th>Judul Dokumen Magang</th>
                                         <th>File Magang</th>
+                                        <th>Jenis Dokumen</th>
                                         <th>Tanggal Upload</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -61,16 +62,17 @@
                                     @foreach ($laporanmagang as $item)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $item->judul }}</td>
+                                            <td>{{ $item->magang_judul }}</td>
                                             {{-- <td>
                                                 <a href="file/{{ $item->file }}"  download="{{ $item->file }}">
                                                  targ
                                                 </a>
                                             </td> --}}
                                             <td>
-                                                <a href="{{ asset('storage/' . $item->file) }}"
-                                                    target="_blank">{{ $item->file }}</a>
+                                                <a href="{{ asset('storage/' . $item->file_magang) }}"
+                                                    target="_blank">{{ $item->file_magang }}</a>
                                             </td>
+                                            <td>{{ $item->iteration }}</td>
                                             <td>{{ $item->created_at->format('d/m/Y H:i:s') }}</td>
                                             <td>
                                                 <div class="dropdown">

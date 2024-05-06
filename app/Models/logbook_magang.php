@@ -11,6 +11,7 @@ use Session;
 class logbook_magang extends Model
 {
     use HasFactory;
+    protected $table = 'logbook_magangs';
     protected $primaryKey = 'logbook_id';
     public $timestamps = true;
     public $incrementing = true;

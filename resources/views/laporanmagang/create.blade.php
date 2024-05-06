@@ -25,17 +25,17 @@
                 <div class="card-body">
                     <form action="{{ url('laporanmagang') }}" method="post" enctype="multipart/form-data">
                         {!! csrf_field() !!}
-                        
+
                         <div class="form-group">
-                            <label for="judul">Judul Laporan Magang</label><br>
-                            <input type="text" name="judul" id="judul" class="form-control"><br>
+                            <label for="magang_judul">Judul Laporan Magang</label><br>
+                            <input type="text" name="magang_judul" id="magang_judul" class="form-control"><br>
                         </div>
-                        
+
                         <div class="form-group">
-                            <label for="file">File</label><br>
-                            <input type="file" name="file" id="file" class="form-control"><br>
+                            <label for="file_magang">File</label><br>
+                            <input type="file" name="file_magang" id="file_magang" class="form-control"><br>
                         </div>
-                        
+
                         <a href="{{ route('laporanmagang.index') }}" class="btn btn-secondary">Close</a>
                         <input type="submit" value="Save" class="btn btn-success"><br>
                     </form>

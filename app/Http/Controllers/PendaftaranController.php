@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Menu;
+use App\Models\pendaftaran_magang;
 
 class PendaftaranController extends Controller
 {
@@ -13,15 +14,10 @@ class PendaftaranController extends Controller
         return view('pendaftaran.daftar', compact('menus'));
     }
 
-    // Fungsi lainnya bisa ditambahkan sesuai kebutuhan
-    public function biodata()
-    {
-        return view('pendaftaran.biodata');
-    }
-
     public function dataindustri()
     {
-        return view('pendaftaran.dataindustri');
+        $data = pendaftaran_magang::PendaftaranByMagang();
+        return view('pendaftaran.dataindustri', compact('data'));
     }
 
     public function upload()
@@ -29,4 +25,3 @@ class PendaftaranController extends Controller
         return view('pendaftaran.upload');
     }
 }
-?>

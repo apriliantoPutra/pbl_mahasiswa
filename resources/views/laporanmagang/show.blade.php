@@ -50,19 +50,19 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                
+
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table">
                             <tbody>
-                          
+
                                 <tr>
                                     <th>Judul Laporan Magang</th>
-                                    <td>{{ $laporanmagang->judul }}</td>
+                                    <td>{{ $laporanmagang->magang_judul }}</td>
                                 </tr>
                                 <tr>
                                     <th>File</th>
-                                    <td>{{ $laporanmagang->file }}</td>
+                                    <td>{{ $laporanmagang->file_magang }}</td>
                                 </tr>
                                 <tr>
                                     <th>Tanggal Upload</th>

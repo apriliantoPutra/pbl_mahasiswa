@@ -40,7 +40,7 @@
     .button-container {
         text-align: center;
         margin-top: 20px;
-        
+
     }
 
     .button-container .btn {
@@ -103,12 +103,19 @@
         margin-left: 10px; /* Ubah margin-left sesuai kebutuhan */
         font-size: 30px;
     }
+    h4 {
+        font-size: 30px;
+        margin-top: 25px;
+        margin-left: 10px;
+    }
 
 </style>
 </head>
 <body>
     <div class="judul">
-        <h4>Pendaftaran</h4>
+    <h4><strong>
+        Pendaftaran
+    </strong></h4>
     </div>
 
     <div class="container">
@@ -128,34 +135,47 @@
         </div>
 
         <form id="form">
-            <label for="nama">Nama Industri:</label>
-            <input type="text" id="nama" name="nama" class="input" required>
+        <label for="nama">Nama Industri:</label>
+            <select id="nama" name="nama" class="input" required>
+                <option value="">Pilih Nama Industri</option>
+                @foreach($data as $industri)
+                <option value="{{ $industri->nama_industri }}">{{ $industri->nama_industri }}</option>
+                @endforeach
+            </select>
 
-            <label for="nim">Alamat Industri:</label>
-            <input type="number" id="nim" name="nim" class="input" required>
+            <label for="alamat">Alamat Industri:</label>
+            <select id="alamat" name="alamat" class="input" required>
+                <option value="">Pilih Alamat Industri</option>
+                @foreach($data as $industri)
+                <option value="{{ $industri->alamat }}">{{ $industri->alamat }}</option>
+                @endforeach
+            </select>
 
-            <label for="universitas">Kode Pos:</label>
-            <input type="text" id="universitas" name="universitas" class="input" required>
+            <label for="nim">Bidang Industri:</label>
+            <select id="bidang" name="bidang" class="input" required>
+                <option value="">Pilih Bidang Industri</option>
+                @foreach($data as $industri)
+                <option value="{{ $industri->bidang }}">{{ $industri->bidang }}</option>
+                @endforeach
+            </select>
 
-            <label for="jurusan">Posisi Magang:</label>
-            <input type="text" id="jurusan" name="jurusan" class="input" required>
 
-            <label for="prodi">Surat Tugas Magang:</label>
-            <input type="text" id="prodi" name="prodi" class="input" required>
-
-            <label for="semester">Portofolio:</label>
-            <input type="number" id="semester" name="semester" class="input" min="1" max="8" required>
-
-            <label for="semester">Surat Sehat:</label>
-            <input type="number" id="semester" name="semester" class="input" min="1" max="8" required>
-
-            <label for="semester">KHS(Keterangan Hasil Study):</label>
-            <input type="number" id="semester" name="semester" class="input" min="1" max="8" required>
+            <label class="form-label" for="customFile">Surat Tugas</label>
+            <input type="file" class="form-control" id="customFile" />
 
             <div class="button-container">
-                <button onclick="window.location.href='{{ route('daftar-magang.biodata') }}'" type="button" class="btn btn-success">Kembali</button>
+                <button onclick="window.location.href='{{ route('daftar-magang.index') }}'" type="button" class="btn btn-success">Kembali</button>
                 <button onclick="window.location.href='{{ route('daftar-magang.upload') }}'" type="button" class="btn btn-success">Selanjutnya</button>
             </div>
+            <?php
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                // Ambil nilai tanggal dari formulir
+                $tanggal = $_POST["tanggal"];
+
+                // Tampilkan tanggal yang diinputkan
+                echo "Tanggal yang diinputkan: " . $tanggal;
+            }
+            ?>
         </form>
     </div>
 @endsection

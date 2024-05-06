@@ -73,7 +73,7 @@
     .popup1 .buttonpopup .btn:hover {
         background-color: #0056b3; /* Darker blue on hover */
     }
-    
+
 
     .lingkaran {
         display: flex;
@@ -136,16 +136,16 @@
         color: white;
         font-size: 20px;
         justify-content: center;
-        margin: 0 auto; 
+        margin: 0 auto;
         padding: 20px;
         border: 1px solid #ccc;
         border-top: 5px solid #020238;
         border-radius: 5px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         text-align: center;
-        padding-left: 20px; 
-        margin-bottom: 20px; 
-       
+        padding-left: 20px;
+        margin-bottom: 20px;
+
     }
 
 
@@ -205,9 +205,9 @@
 
             </div>
 
-        
-        
-        
+
+
+
     </div>
     <script>
         function showPopup() {
