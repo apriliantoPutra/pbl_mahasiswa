@@ -147,6 +147,20 @@
         margin-bottom: 20px;
 
     }
+    h3 {
+        margin-left: 45px;
+        font-size: 29px;
+        margin-top: 50px;
+    }
+    h4 {
+        font-size: 30px;
+        margin-top: 25px;
+        margin-left: 10px;
+    }
+    .modal-body{
+        border-radius: 15px;
+    }
+
 
 
 
@@ -154,7 +168,9 @@
 </head>
 <body>
     <div class="judul">
-        <h4>Pendaftaran</h4>
+    <h4><strong>
+    Pendaftaran
+    </strong></h4>
     </div>
 
     <div class="container">
@@ -175,30 +191,33 @@
             <br>
             <h1>Periksa lagi biodata dan data industri Anda!</h1>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-      <h2 class="modal-title" id="exampleModalLabel" style="text-align: center;">Jawaban Anda sudah terkirim</h2>
-      <style>
-        margin-top:200px;
-      </style>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <br>
-        <p>Tolong tunggu persetujuan magang dari industri,</p>
-        <p>hasilnya akan dikirim melalui email peserta.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                <h3><strong>Jawaban Anda sudah terkirim</strong></h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle" style="width: 40px; height: 40px; color: #28a745;">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg> <!-- Icon centang -->
+                        <br>
+                        <br>
+                        <p>Tolong tunggu persetujuan magang dari industri, <br>
+                        hasilnya akan dikirim melalui email peserta.</p>
+
+                    </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+                </div>
+            </div>
+            </div>
             <div class="button-container">
                 <button onclick="window.location.href='{{ route('daftar-magang.dataindustri') }}'" type="button" class="btn btn-success">Kembali</button>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Lanjut</button>

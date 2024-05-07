@@ -12,6 +12,5 @@ class nilai extends Model
     protected $primaryKey = 'id';
     protected $fillable = ['nilai_dosen', 'tipelaporan_id', 'nilai_industri', 'nilai_akhir'];
 
-    
-    
+
 }
