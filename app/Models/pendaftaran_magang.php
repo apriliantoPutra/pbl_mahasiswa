@@ -13,26 +13,27 @@ class pendaftaran_magang extends Model
     protected $table = 'magang_industris';
     public static function PendaftaranByMagang()
     {
-        // // Mendapatkan email pengguna yang sedang terautentikasi
+        // Mendapatkan email pengguna yang sedang terautentikasi
         // $email = Auth::user()->email;
 
-        // // Mendapatkan magang_id dari tabel magangs berdasarkan email pengguna
+        // Mendapatkan magang_id dari tabel magangs berdasarkan email pengguna
         // $magang_id = DB::table('magangs')
         //     ->join('mahasiswas', 'magangs.mhs_nim', '=', 'mahasiswas.mhs_nim')
         //     ->join('users', 'mahasiswas.email', '=', 'users.email')
         //     ->where('users.email', $email)
-        //     ->value('magangs.magang_id');
+        //     ->value('mahasiswas.mhs_nim');
 
         // // Simpan magang_id ke dalam session
-        // session(['magang_id' => $magang_id]);
+        // session(['mhs_nim' => $mhs_nim]);
 
-        // // Mengambil data logbook_magangs berdasarkan magang_id dari session
+        // Mengambil data logbook_magangs berdasarkan magang_id dari session
 
-         $pendaftaranMagangs = DB::table('magang_industris')
-        ->join('industris', 'industris.industri_id', '=', 'magang_industris.industri_id')
-        ->join('magangs', 'magangs.magang_id', '=', 'magang_industris.magang_id')
-        ->select('magangs.magang_id', 'magang_industris.*', 'industris.*')
-        ->get();
+        $pendaftaranMagangs = DB::table('magang_industris')
+            ->join('industris', 'industris.industri_id', '=', 'magang_industris.industri_id')
+            ->join('magangs', 'magangs.magang_id', '=', 'magang_industris.magang_id')
+            ->select('magangs.magang_id', 'magang_industris.*', 'industris.*')
+            ->get();
+        // dd($pendaftaranMagangs);
 
 
         return $pendaftaranMagangs;

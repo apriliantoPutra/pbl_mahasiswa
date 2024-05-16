@@ -153,7 +153,8 @@
                 <h5>Form Pendaftaran</h5>
             </div>
 
-            <form action="" method="post" enctype="multipart/form-data">
+            <form action="{{ route('daftar-magang.store') }}" method="post" enctype="multipart/form-data">
+                @csrf
                 <label for="nama">Nama Industri:</label>
                 <select id="nama" name="nama" class="input" required>
                     <option value="">Pilih Nama Industri</option>
@@ -195,6 +196,8 @@
                         <span>{{ $message }}</span>
                     </div>
                 @enderror
+                <button type="submit" class="btn btn-primary">Klik</button>
+            </form>
 
         </div>
 
@@ -207,12 +210,12 @@
                 });
             });
         </script>
-        <div class="button-container">
+        {{-- <div class="button-container">
             <button onclick="window.location.href='{{ route('daftar-magang.index') }}'" type="button"
                 class="btn btn-success">Kembali</button>
             <button onclick="window.location.href='{{ route('daftar-magang.upload') }}'" type="button"
                 class="btn btn-success">Selanjutnya</button>
-        </div>
+        </div> --}}
         <?php
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Ambil nilai tanggal dari formulir

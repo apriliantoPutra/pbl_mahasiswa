@@ -15,8 +15,9 @@ class LaporanController extends Controller
      */
     public function index(): View
     {
-        $data = Laporan_magang::all();
-        return view('laporanmagang.index')->with('laporanmagang', $data);
+        $data = Laporan_magang::TambahDokumen();
+        $coba = laporan_magang::gabungkan_laporan_dan_proposal();
+        return view('laporanmagang.index', compact('data', 'coba'));
     }
     public function create(): View
     {
@@ -37,7 +38,7 @@ class LaporanController extends Controller
         $magang_id = session('magang_id');
 
         $data = new Laporan_magang();
-        $data->magang_id = $request->magang_id;
+        $data->magang_id = $magang_id; // Menggunakan magang_id dari session
         $data->magang_judul = $request->magang_judul;
         $data->file_magang = $nama_dokumen;
         $data->save();
@@ -61,11 +62,5 @@ class LaporanController extends Controller
         $input = $request->all();
         $data->update($input);
         return redirect('laporanmagang')->with('flash_message', 'student Updated!');
-    }
-
-    public function destroy(string $laporan_id): RedirectResponse
-    {
-        Laporan_magang::destroy($laporan_id);
-        return redirect('laporanmagang')->with('error', 'Data berhasil dihapus.');
     }
 }

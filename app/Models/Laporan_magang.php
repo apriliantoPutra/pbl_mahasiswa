@@ -16,7 +16,52 @@ class Laporan_magang extends Model
     protected $primaryKey = 'laporan_id';
     protected $fillable = ['magang_judul', 'file_magang'];
 
-    public static function LaporanByMagang()
+    public $incrementing = true;
+
+
+    public static function laporan_mhs()
+    {
+
+        $query = DB::table('laporan_magangs')
+            ->join('magangs', 'magangs.magang_id', '=', 'laporan_magangs.magang_id')
+            ->select('magangs.magang_id', 'laporan_magangs.*');
+
+        // Jika parameter magang_id diberikan, tambahkan klausa 'where'
+
+        $laporan = $query->get()->map(function ($item) {
+            $item->jenis = 'Laporan'; // Tambahkan kolom jenis
+            return $item;
+        });
+
+        return $laporan; // Ambil data
+    }
+
+    public static function proposal_mhs()
+    {
+        $coba = DB::table('proposal_magangs')
+            ->join('magangs', 'magangs.magang_id', '=', 'proposal_magangs.magang_id')
+            ->select('magangs.magang_id', 'proposal_magangs.*');
+
+        // Jika parameter magang_id diberikan, tambahkan klausa 'where'
+
+        $proposal = $coba->get()->map(function ($item) {
+            $item->jenis = 'Proposal'; // Tambahkan kolom jenis
+            return $item;
+        });
+
+        return $proposal;
+    }
+    public static function gabungkan_laporan_dan_proposal()
+    {
+        $laporan = self::laporan_mhs();
+        $proposal = self::proposal_mhs();
+
+        // Menggabungkan koleksi menggunakan metode merge
+        $hasil_akhir = $laporan->merge($proposal);
+
+        return $hasil_akhir; // Mengembalikan hasil gabungan
+    }
+    public static function TambahDokumen()
     {
         // Mendapatkan email pengguna yang sedang terautentikasi
         $email = Auth::user()->email;
@@ -32,12 +77,12 @@ class Laporan_magang extends Model
         session(['magang_id' => $magang_id]);
 
         // Mengambil data logbook_magangs berdasarkan magang_id dari session
-        $laporanMagangs = DB::table('laporan_magangs')
+        $TambahDokumen = DB::table('laporan_magangs')
             ->join('magangs', 'magangs.magang_id', '=', 'laporan_magangs.magang_id')
             ->select('magangs.magang_id', 'laporan_magangs.*')
             ->where('magangs.magang_id', $magang_id)
             ->get();
 
-        return $laporanMagangs;
+        return $TambahDokumen;
     }
 }

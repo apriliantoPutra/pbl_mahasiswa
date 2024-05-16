@@ -55,11 +55,10 @@
                                         <th>File Magang</th>
                                         <th>Jenis Dokumen</th>
                                         <th>Tanggal Upload</th>
-                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($laporanmagang as $item)
+                                    @foreach ($coba as $item)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->magang_judul }}</td>
@@ -72,65 +71,9 @@
                                                 <a href="{{ asset('storage/' . $item->file_magang) }}"
                                                     target="_blank">{{ $item->file_magang }}</a>
                                             </td>
-                                            <td>{{ $item->iteration }}</td>
-                                            <td>{{ $item->created_at->format('d/m/Y H:i:s') }}</td>
-                                            <td>
-                                                <div class="dropdown">
-                                                    <button type="button"
-                                                        class="btn btn-block btn-sm btn-outline dropdown-toggle"
-                                                        data-toggle="dropdown" style="border-color: #020238;">
-                                                        <i class="fas fa-cog"></i>
-                                                    </button>
+                                            <td>{{ $item->jenis }}</td>
+                                            <td>{{ $item->created_at }}</td>
 
-                                                    <div class="dropdown-menu" role="menu">
-                                                        <a class="dropdown-item"
-                                                            href="{{ url('/laporanmagang/' . $item->id) }}"
-                                                            title="Lihat Laporan">Detail</a>
-                                                        <a class="dropdown-item"
-                                                            href="{{ url('/laporanmagang/' . $item->id . '/edit') }}"
-                                                            title="Edit Laporan">Edit</a>
-                                                        <a class="dropdown-item" href="#" data-toggle="modal"
-                                                            data-target="#confirmDeleteModal-{{ $item->id }}">
-                                                            Hapus
-                                                        </a>
-                                                    </div>
-                                                </div>
-
-                                                <!-- Modal -->
-                                                <div class="modal fade" id="confirmDeleteModal-{{ $item->id }}"
-                                                    tabindex="-1" role="dialog"
-                                                    aria-labelledby="confirmDeleteModalLabel-{{ $item->id }}"
-                                                    aria-hidden="true">
-                                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title"
-                                                                    id="confirmDeleteModalLabel-{{ $item->id }}">
-                                                                    Konfirmasi Hapus</h5>
-                                                                <button type="button" class="close" data-dismiss="modal"
-                                                                    aria-label="Close">
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                </button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                Apakah Anda yakin ingin menghapus laporan ini?
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary"
-                                                                    data-dismiss="modal">Batal</button>
-                                                                <form method="POST"
-                                                                    action="{{ url('/laporanmagang/' . $item->id) }}"
-                                                                    id="delete-form-{{ $item->id }}">
-                                                                    @csrf
-                                                                    @method('DELETE')
-                                                                    <button type="submit" class="btn btn-danger"><i
-                                                                            class="fas fa-trash"></i> Hapus</button>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </td>
 
 
 

@@ -45,6 +45,7 @@ Route::resource('laporan-magang', LaporanController::class);
 Route::resource("laporanmagang", LaporanController::class);
 Route::resource('nilai-magang', NilaiController::class);
 Route::resource('nilai', NilaiController::class);
+Route::resource('daftar-magang', NilaiController::class);
 Route::resource('jadwal-bimbingan-magang', JadwalBimbinganController::class);
 Route::resource('jadwal-seminar-magang', JadwalSeminarController::class);
 Route::get('/view-pdf/{logbook_id}', 'App\Http\Controllers\logbookController@viewPdf')->name('view_pdf');
@@ -52,8 +53,9 @@ Route::get('/logbook-magang/{logbook_magang}/edit', [logbookController::class, '
 Route::put('/logbook-magang/{logbook_magang}/update', [logbookController::class, 'update'])->name('logbook-magang.update');
 
 Route::resource('manage-permission', PermissionController::class)->only('store', 'destroy');
-Route::get('/daftar-magang', [PendaftaranController::class, 'index'])->name('daftar-magang.index');
-Route::get('/daftar-magang/dataindustri', [PendaftaranController::class, 'dataindustri'])->name('daftar-magang.dataindustri');
-Route::get('/daftar-magang/upload', [PendaftaranController::class, 'upload'])->name('daftar-magang.upload');
+// Route::get('/daftar-magang', [PendaftaranController::class, 'index'])->name('daftar-magang.index');
+// Route::get('/daftar-magang/dataindusrti', [PendaftaranController::class, 'dataindustri'])->name('daftar-magang.dataindustri');
+// Route::post('/daftar-magang/store', [PendaftaranController::class, 'store'])->name('daftar-magang.store');
+// Route::resource('/daftar-magang', PendaftaranController::class);
 
 Route::get('dbbackup', [DBBackupController::class, 'DBDataBackup']);

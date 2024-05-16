@@ -11,6 +11,10 @@ use Session;
 class Magang extends Model
 {
     use HasFactory;
+    protected $table = "magangs";
+    protected $primarykey = 'magang_id';
+    protected $fillable = ['mhs_nim', 'dosen_nip'];
+    public $timestamps = false;
 
     public static function Magang()
     {
