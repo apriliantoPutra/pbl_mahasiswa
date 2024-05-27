@@ -18,11 +18,10 @@ class NilaiController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index() 
+    public function index()
     {
         $data = nilai::all();
-        
-        return view ('nilai.index')->with('nilai', $data);
+        return view('nilai.index')->with('nilai', $data);
     }
 
     /**
@@ -44,11 +43,11 @@ class NilaiController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id) 
-    {
-        $data = nilai::find($id);
-        return view('nilai.show')->with('nilai', $data);
-    }
+    // public function show(string $id)
+    // {
+    //     $data = nilai::find($id);
+    //     return view('nilai.show')->with('nilai', $data);
+    // }
 
     /**
      * Show the form for editing the specified resource.

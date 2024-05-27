@@ -45,7 +45,7 @@ Route::resource('laporan-magang', LaporanController::class);
 Route::resource("laporanmagang", LaporanController::class);
 Route::resource('nilai-magang', NilaiController::class);
 Route::resource('nilai', NilaiController::class);
-Route::resource('daftar-magang', NilaiController::class);
+Route::resource('daftar-magang', PendaftaranController::class);
 Route::resource('jadwal-bimbingan-magang', JadwalBimbinganController::class);
 Route::resource('jadwal-seminar-magang', JadwalSeminarController::class);
 Route::get('/view-pdf/{logbook_id}', 'App\Http\Controllers\logbookController@viewPdf')->name('view_pdf');

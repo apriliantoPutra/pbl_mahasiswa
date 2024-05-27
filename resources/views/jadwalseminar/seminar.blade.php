@@ -53,25 +53,19 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm-6">
-                            @foreach($seminar_magangs as $index)
+                        @foreach ($seminar as $index)
                             <p><strong>Nama:</strong> {{ $index->nama_id }}</p>
                             <p><strong>Nim:</strong> {{ $index->mhs_nim }}</p>
                             <p><strong>Penguji:</strong> {{ $index->dosen_nama }}</p>
-                            @endforeach
+
                         </div>
                         <div class="col-sm-6">
-                            @foreach($seminar_magangs as $index)
-                            <?php
-                                $hari = date('l', strtotime($index->tgl_seminar)); // Get day name
-                                $tanggal = date('d-m-Y', strtotime($index->tgl_seminar)); // Format date
-                            ?>
-                            <p><strong>Jadwal:</strong> <?php echo "$hari, $tanggal"; ?></p>
-                            <p><strong>Jam:</strong> {{ $index->jam }}</p>
-                            <p><strong>Ruangan:</strong> {{ $index->ruangan }}</p>
-                            <p><strong>Link Zoom:</strong>---</p>
-                            <p><strong>Catatan:</strong>{{ $index->catatan }}</p>
-                            @endforeach
+                            <p><strong>Jadwal:</strong> {{ $index->tgl_seminar }}</p>
+                            <p><strong>Jam:</strong> {{ $index->waktu }}</p>
+                            <p><strong>Ruangan:</strong> {{ $index->ruangan_id }}</p>
+
                         </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

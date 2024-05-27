@@ -19,7 +19,7 @@
   }
   .pagination {
     display: flex;
-    justify-content: flex-end; 
+    justify-content: flex-end;
     padding: 10px;
 }
 
@@ -44,7 +44,7 @@
     <div class="row mb-2">
         <div class="col-sm-6 text-uppercase">
             <div class="card-tools">
-                <a href="#" class="btn btn-sm btn-success"><i class="fas fa-plus-circle"></i> Tambah Jadwal Bimbingan</a>
+                <a href="{{ route('jadwal-bimbingan-magang.create') }}" class="btn btn-sm btn-success"><i class="fas fa-plus-circle"></i> Tambah Jadwal Bimbingan</a>
             </div>
         </div>
         <div class="col-sm-6">
@@ -66,10 +66,7 @@
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Nama</th>
-                    <th>Nim</th>
                     <th>Jadwal</th>
-                    <th>Dosen Pengampu</th>
                     <th>Kegiatan</th>
                     <th>Status</th>
                     <th>Aksi</th>
@@ -83,20 +80,18 @@
                 @foreach ($magang as $index)
                 <tr>
                     <td>{{ $i }}</td>
-                    <td>{{ $index->nama_id }}</td>
-                    <td>{{ $index->mhs_nim }}</td>
                     <?php
                         $hari = date('l', strtotime($index->tgl_kegiatan)); // Get day name
                         $tanggal = date('d-m-Y', strtotime($index->tgl_kegiatan)); // Format date
                     ?>
                     <td><?php echo "$hari, $tanggal"; ?></td>
-                    <td>{{ $index->dosen_nama }}</td>
+
                     <td>{{ $index->kegiatan }}</td>
                     <td>
                         @if($index->status_kehadiran == 1)
-                            Hadir
+                            Terverivikasi
                         @else
-                            Tidak Hadir
+                            Belum diverifikasi
                         @endif
                     </td>
                     <td>

@@ -71,56 +71,6 @@
             margin-bottom: 20px;
         }
 
-        .isi1 {
-            background-color: rgba(216, 216, 216, 1);
-            color: white;
-            border-radius: 50%;
-            /* Untuk membuat lingkaran */
-            width: 50px;
-            /* Ukuran diameter lingkaran */
-            height: 50px;
-            /* Ukuran diameter lingkaran */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-left: 10px;
-            /* Ubah margin-left sesuai kebutuhan */
-            font-size: 30px;
-        }
-
-        .isi2 {
-            background-color: #020238;
-            color: white;
-            border-radius: 50%;
-            /* Untuk membuat lingkaran */
-            width: 50px;
-            /* Ukuran diameter lingkaran */
-            height: 50px;
-            /* Ukuran diameter lingkaran */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-left: 10px;
-            /* Ubah margin-left sesuai kebutuhan */
-            font-size: 30px;
-        }
-
-        .isi3 {
-            background-color: rgba(216, 216, 216, 1);
-            color: white;
-            border-radius: 50%;
-            /* Untuk membuat lingkaran */
-            width: 50px;
-            /* Ukuran diameter lingkaran */
-            height: 50px;
-            /* Ukuran diameter lingkaran */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-left: 10px;
-            /* Ubah margin-left sesuai kebutuhan */
-            font-size: 30px;
-        }
 
         h4 {
             font-size: 30px;
@@ -138,7 +88,7 @@
         </div>
 
         <div class="container">
-            <div class="lingkaran">
+            {{-- <div class="lingkaran">
                 <div class="isi1">
                     1
                 </div>
@@ -148,7 +98,7 @@
                 <div class="isi3">
                     3
                 </div>
-            </div>
+            </div> --}}
             <div class="form-judul">
                 <h5>Form Pendaftaran</h5>
             </div>
@@ -156,22 +106,22 @@
             <form action="{{ route('daftar-magang.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <label for="nama">Nama Industri:</label>
-                <select id="nama" name="nama" class="input" required>
+                <select id="nama" name="nama_industri" class="input" required>
                     <option value="">Pilih Nama Industri</option>
                     {{-- @if ($industriid) --}}
-                        @foreach ($data as $industri)
-                            <option value="{{ $industri->nama_industri }}">{{ $industri->nama_industri }}</option>
+                        @foreach ($dataindustri as $industri)
+                            <option value="{{ $industri->industri_id }}">{{ $industri->nama_industri }}</option>
                         @endforeach
                     {{-- @endif --}}
                 </select>
 
-                <label for="nim">Bidang Industri:</label>
+                {{-- <label for="nim">Bidang Industri:</label>
                 <select id="bidang" name="bidang" class="input" required>
                     <option value="">Pilih Bidang Industri</option>
-                    @foreach ($data as $industri)
+                    @foreach ($dataindustri as $industri)
                         <option value="{{ $industri->bidang }}">{{ $industri->bidang }}</option>
                     @endforeach
-                </select>
+                </select> --}}
 
                 <div class="form-group">
                     <label>Tanggal Mulai</label>
@@ -196,7 +146,7 @@
                         <span>{{ $message }}</span>
                     </div>
                 @enderror
-                <button type="submit" class="btn btn-primary">Klik</button>
+                <button type="submit" class="btn btn-primary">Daftar Industri</button>
             </form>
 
         </div>

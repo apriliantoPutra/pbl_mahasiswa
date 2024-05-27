@@ -32,7 +32,8 @@ class LaporanController extends Controller
         ]);
 
         $file_magang = $request->file('file_magang');
-        $nama_dokumen = $file_magang->getClientOriginalName();
+        // $nama_dokumen = $file_magang->getClientOriginalName();
+        $nama_dokumen = 'FT' . date('Ymdhis') . '.' . $request->file('file_magang')->getClientOriginalExtension();
         $file_magang->move('storage', $nama_dokumen);
 
         $magang_id = session('magang_id');
@@ -62,5 +63,10 @@ class LaporanController extends Controller
         $input = $request->all();
         $data->update($input);
         return redirect('laporanmagang')->with('flash_message', 'student Updated!');
+    }
+    public function destroy(string $laporan_id): RedirectResponse
+    {
+        Laporan_magang::destroy($laporan_id);
+        return redirect()->back()->with('success', 'Data berhasil dihapus.');
     }
 }

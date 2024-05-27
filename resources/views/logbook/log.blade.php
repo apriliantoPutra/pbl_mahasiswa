@@ -6,46 +6,7 @@
     <link rel="stylesheet" href="{{ asset('') }}plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 @endpush
 @section('content')
-    <style>
-        /* .container {
-            max-width: 95%;
-            margin-left: 10px;
-            padding: 20px;
 
-          } */
-        /* h1 {
-                margin-bottom: 20px;
-            } */
-
-        /* .table-responsive {
-            background-color: white;
-            padding: 20px;
-            margin-top: 20px;
-            box-shadow: 0px -5px 0px blue;
-            border-radius: 3px;
-          } */
-        /* .pagination {
-                display: flex;
-                justify-content: flex-end;
-                padding: 10px;
-            }
-
-            .pagination span {
-                margin-right: auto;
-                color: black;
-            }
-
-            .pagination a {
-                padding: 5px 10px;
-                border: 1px solid #ccc;
-                text-decoration: none;
-                color: #333;
-            }
-
-            .pagination a.active {
-                background-color: #f0f0f0;
-            } */
-    </style>
     <div class="content-header">
         <div class="container-fluid">
             <div class="row">

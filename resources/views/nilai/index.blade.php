@@ -1,89 +1,62 @@
 @extends('layouts.app')
+
 @section('content')
+@push('css')
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <style>
-    .card {
-        border-top: 5px solid #020238; /* Change the border color and weight as needed */
+    /* Add border to card-header */
+    .card-header {
+        border-top: 5px solid #020238;
+        background-color: #fff; /* Background color */
     }
-    .table thead th {
-        background-color: #020238;
-        color: #ffffff; /* Optional: Set text color to white for better contrast */
+    .table {
+        width: 100%;
+        margin-bottom: 0;
     }
-    .pagination {
-    display: flex;
-    justify-content: flex-end; 
-    padding: 10px;
-}
-
-.pagination span {
-    margin-right: auto; /* Mengatur agar elemen span fleksibel dan mengisi ruang yang tersedia */
-    color: black;
-}
-
-.pagination a {
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-    text-decoration: none;
-    color: #333;
-}
-
-.pagination a.active {
-    background-color: #f0f0f0;
-}
+    .table th, .table td {
+        padding: 0.75rem;
+        vertical-align: top;
+        border-top: 1px solid #dee2e6;
+    }
+    .table th {
+        background-color: #f8f9fa; /* Table header background color */
+        border-color: #dee2e6;
+        font-size: 16px;
+        font-weight: bold;
+    }
 </style>
+@endpush
 
 <div class="container mt-3">
-    <h3><b>Penilaian Magang Mahasiswa</b></h3>
-    <div class="row mt-3">
-        <div class="col-md-12">
+    <h3 class="mb-4"><b>Nilai Magang</b></h3>
+    <div class="row">
+        <div class="col-sm-12">
             <div class="card">
-            <div class="card-header">
-                    </div>
+                <div class="card-header"></div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Nilai Dosen</th>
-                                    <th>Nilai Industri</th>
-                                    <th>Nilai Akhir</th>
-                                    <th>Jenis Dokumen</th>
-                                    <th>Aksi</th>
-                                </tr>
-                            </thead>
+                        <table class="table">
                             <tbody>
-                                @foreach($nilai as $item)
-                                    <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->nilai_dosen }}</td>
-                                        <td>{{ $item->nilai_industri }}</td>
-                                        <td>{{ $item->nilai_akhir }}</td>
-                                        <td>{{ $item->tipelaporan_id }}</td>
-                                        <td>
-    <div class="dropdown">
-    <button type="button" class="btn btn-block btn-sm btn-outline dropdown-toggle" data-toggle="dropdown" style="border-color: #020238;">
-    <i class="fas fa-cog"></i>
-</button>
-
-        <div class="dropdown-menu" role="menu">
-            <a class="dropdown-item" href="{{ url('/nilai/' . $item->id) }}" title="Lihat nilai">Detail</a>
-</td></tr>
+                                @foreach($nilai as $index)
+                                <tr>
+                                    <th>Nilai Dosen</th>
+                                    <td>{{ $index->nilai_dosen }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Nilai Industri</th>
+                                    <td>{{ $index->nilai_industri }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Nilai Akhir</th>
+                                    <td>{{ $index->nilai_akhir }}</td> <!-- Change format here -->
+                                </tr>
                                 @endforeach
-                                </tbody>
+                            </tbody>
                         </table>
-                        <div class="pagination">
-            <span>Showing 1 to 3 of 3 entries</span>
-            <a href="#" class="prev">Previous</a>
-            <a href="#" class="active">1</a>
-            <a href="#">Next</a>
-        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
-
 @endsection

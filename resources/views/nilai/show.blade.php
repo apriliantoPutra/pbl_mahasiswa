@@ -50,23 +50,23 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                
+
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table">
                             <tbody>
-                          
+                                @foreach($nilai as $index)
                                 <tr>
                                     <th>Nilai Dosen</th>
-                                    <td>{{ $nilai->nilai_dosen }}</td>
+                                    <td>{{ $index->nilai_dosen }}</td>
                                 </tr>
                                 <tr>
                                     <th>Nilai Industri</th>
-                                    <td>{{ $nilai->nilai_industri }}</td>
+                                    <td>{{ $index->nilai_industri }}</td>
                                 </tr>
                                 <tr>
                                     <th>Nilai Akhir</th>
-                                    <td>{{ $nilai->nilai_akhir }}</td> <!-- Change format here -->
+                                    <td>{{ $index->nilai_akhir }}</td> <!-- Change format here -->
                                 </tr>
                             </tbody>
                         </table>
