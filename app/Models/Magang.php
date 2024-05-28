@@ -78,4 +78,42 @@ class Magang extends Model
             ->get();
         return $magang;
     }
+    public static function datamhs()
+    {
+        $email = Auth::user()->email;
+        $query = DB::table('magang_industris')
+            ->join('magangs', 'magangs.magang_id', '=', 'magang_industris.magang_id')
+            ->join('mahasiswas', 'mahasiswas.mhs_nim', '=', 'magangs.mhs_nim')
+            ->join('industris', 'industris.industri_id', '=', 'magang_industris.industri_id')
+            ->join('users', 'users.email', '=', 'mahasiswas.email')
+            ->selectRaw('magangs.magang_id, magang_industris.*, mahasiswas.mhs_nim, mahasiswas.nama_id, industris.nama_industri')
+            ->where('users.email', $email)
+            ->get();
+
+        return $query;
+    }
+    public static function datadosen()
+    {
+        $email = Auth::user()->email;
+        $query = DB::table('magangs')
+            ->join('mahasiswas', 'mahasiswas.mhs_nim', '=', 'magangs.mhs_nim')
+            ->leftJoin('dosens', 'dosens.dosen_nip', '=', 'magangs.dosen_nip')
+            ->join('users', 'users.email', '=', 'mahasiswas.email')
+            ->selectRaw('magangs.magang_id, mahasiswas.mhs_nim, mahasiswas.nama_id, dosens.dosen_nip, dosens.dosen_nama',)
+            ->where('users.email', $email)
+            ->get();
+
+        return $query;
+    }
+    public static function Mhsmagang()
+    {
+        $id = Auth::user()->id;
+        $magang = DB::table('mahasiswas')
+            ->join('users', 'users.email', '=', 'mahasiswas.email')
+            ->select('*')
+            ->where('users.id', $id)
+            ->first();
+
+        return $magang;
+    }
 }

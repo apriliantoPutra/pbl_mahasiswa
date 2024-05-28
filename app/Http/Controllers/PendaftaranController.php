@@ -22,15 +22,19 @@ class PendaftaranController extends Controller
 
         if (isset($mhs->magang_id)) {
             toastr()->warning('Anda Sudah Daftar');
-            return redirect()->route('logbook-magang.index');
-        } else {
+            $datamhs = Magang::datamhs($mhs);
+            $datadosen = Magang::datadosen();
+            // dd($datadosen);
+            return view('pendaftaran.data', compact('data', 'datamhs','datadosen'));
+        }
+        else {
             return view('pendaftaran.daftar', compact('data', 'dataindustri', 'industriid'));
         }
     }
 
     public function store(Request $request)
     {
-        $nim = Magang::BimbinganByMagang()->mhs_nim;
+        $nim = Magang::Mhsmagang()->mhs_nim;
 
         $magang_id = DB::table('magangs')->insertGetId(
             ['mhs_nim' => $nim]
@@ -44,5 +48,12 @@ class PendaftaranController extends Controller
                 'tgl_selesai' => $request->tgl_selesai,
             ],
         );
+        return redirect()->route('daftar-magang.index')->with('success', 'Data berhasil disimpan.');
+    }
+    public function show($magang_id)
+    {
+        $menus = Menu::all();
+        $data = Magang::datamhs($magang_id);
+        return view('pendaftaran.data', compact('menus', 'data'));
     }
 }
