@@ -40,8 +40,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <a href="{{ url('/laporanmagang/create') }}" class="btn btn-success float-right"
-                            title="Tambah Laporan Magang">
+                        <a href="{{ url('/laporanmagang/create') }}" class="btn btn-success float-right" title="Tambah Laporan Magang">
                             <i class="fa fa-plus"></i> Laporan Magang
                         </a>
                     </div>
@@ -54,7 +53,6 @@
                                         <th>Judul Dokumen Magang</th>
                                         <th>File Magang</th>
                                         <th>Jenis Dokumen</th>
-                                        <th>Tanggal Upload</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -63,59 +61,31 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->magang_judul }}</td>
-                                            {{-- <td>
-                                                <a href="file/{{ $item->file }}"  download="{{ $item->file }}">
-                                                 targ
-                                                </a>
-                                            </td> --}}
                                             <td>
-                                                <a href="{{ asset('storage/' . $item->file_magang) }}"
-                                                    target="_blank">{{ $item->file_magang }}</a>
+                                                <a href="{{ asset('storage/' . $item->file_magang) }}" target="_blank">{{ $item->file_magang }}</a>
                                             </td>
-                                            <td>{{ $item->jenis }}</td>
-                                            <td>{{ $item->created_at }}</td>
                                             <td>
-                                                <!-- Tombol Hapus -->
-                                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                                        data-target="#confirmDeleteModal-{{ $item->laporan_id }}">
-                                                    <i class="fas fa-trash"></i> Hapus
-                                                </button>
-
-                                                <!-- Modal -->
-                                                <div class="modal fade" id="confirmDeleteModal-{{ $item->laporan_id }}" tabindex="-1" role="dialog"
-                                                     aria-labelledby="confirmDeleteModalLabel-{{ $item->laporan_id }}" aria-hidden="true">
-                                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="confirmDeleteModalLabel-{{ $item->laporan_id }}">
-                                                                    Konfirmasi Hapus
-                                                                </h5>
-                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                </button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                Apakah Anda yakin ingin menghapus laporan ini?
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                                                                <form method="POST" action="{{ url('/laporanmagang/' . $item->laporan_id) }}"
-                                                                      id="delete-form-{{ $item->laporan_id }}">
-                                                                    @csrf
-                                                                    @method('DELETE')
-                                                                    <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
-                                                                </form>
-                                                            </div>
-                                                        </div>
+                                                @if($item->tipe == 1)
+                                                    <span class="badge badge-success">Proposal</span>
+                                                @else
+                                                    <span class="badge badge-danger">Laporan</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <div class="dropdown">
+                                                    <button class="btn btn-block btn-sm btn-outline-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <i class="fas fa-cog"></i>
+                                                    </button>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                        <a class="dropdown-item" href="{{ route('laporanmagang.edit', ['laporanmagang' => $item->laporan_id]) }}">Edit</a>
+                                                        <form method="POST" action="{{ route('laporanmagang.destroy', $item->laporan_id) }}">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="dropdown-item confirm-button">Hapus</button>
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </td>
-
-
-
-
-
-
                                         </tr>
                                     @endforeach
                                 </tbody>

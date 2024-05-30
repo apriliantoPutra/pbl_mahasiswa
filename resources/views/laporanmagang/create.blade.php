@@ -30,7 +30,7 @@
 
                             <div class="mb-3">
                                 <label for="jenis_dokumen" class="form-label">Jenis Dokumen</label>
-                                <select class="form-select" id="jenis_dokumen" aria-label="Default select example">
+                                <select class="form-select" name="jenis_dokumen" aria-label="Default select example">
                                     <option selected>Pilih Jenis Dokumen</option>
                                     <option value="1">Proposal</option>
                                     <option value="2">Laporan</option>
